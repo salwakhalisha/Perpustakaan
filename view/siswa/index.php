@@ -12,7 +12,7 @@
           <div class="card-body">
               <div class="row">
                   <div class="col">
-                      <a href="index.php?page=siswa_create&title=siswa_create" class="btn btn-success btn-md"><i class="fas fa-user-plus"></i> Tambah Data</a>
+                      <a href="index.php?page=siswa_create&title=siswa_create" class="btn btn-success btn-md"><i class="fas fa-user-edit"></i> Tambah Data</a>
                   </div>
               </div>
               <div class="row pt-3">

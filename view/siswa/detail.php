@@ -23,19 +23,19 @@
         <div class="card-body">
             <div class="form-group">
                   <label for="nisn">NISN</label>
-                  <input type="text" class="form-control" id="nisn" name="nisn" value="<?= $data['nisn'] ?>">
+                  <input type="text" class="form-control" id="nisn" name="nisn" value="<?= $data['nisn'] ?>" disabled>
             </div>
               <div class="form-group">
                   <label for="nama">Nama Siswa</label>
-                  <input type="text" class="form-control" id="nama" name="nama" value="<?= $data['nama'] ?>">
+                  <input type="text" class="form-control" id="nama" name="nama" value="<?= $data['nama'] ?>" disabled>
               </div>
               <div class="form-group">
                   <label for="Alamat">Alamat</label>
-                  <textarea class="form-control" rows="3" id="alamat" name="alamat"> <?= $data['alamat'] ?></textarea>
+                  <textarea class="form-control" rows="3" id="alamat" name="alamat"  disabled> <?= $data['alamat'] ?></textarea>
               </div>
               <div class="form-group">
                   <label for="nohp">No HP</label>
-                  <input type="text" class="form-control" id="nohp" name="nohp" value="<?= $data['nohp'] ?>">
+                  <input type="text" class="form-control" id="nohp" name="nohp" value="<?= $data['nohp'] ?>" disabled>
               </div>
         </div>
           <!-- /.card-body -->

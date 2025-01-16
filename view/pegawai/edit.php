@@ -34,7 +34,7 @@
                   <input type="text" class="form-control" id="username" name="username" value="<?= $data['username'] ?>" >
               </div>
               <div class="form-group">
-                  <label for="nama">Password</label>
+                  <label for="password">Password</label>
                   <input type="Password" class="form-control" id="password" name="password" >
               </div>
               <div class="form-group">

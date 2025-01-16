@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!$_SESSION['login_status']){
+  header("location:login.php");
+}
+
   if(isset($_GET['title'])){
     $title=$_GET['title'];
   }else{
@@ -7,10 +12,12 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
+  
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?= strtoupper($title) ?></title>
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico"><link rel="icon" type="image/x-icon" href="img/favicon.ico">
   
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -23,6 +30,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <link rel="stylesheet" href="dist/css/darkmode.css">
+  
 </head>
 <body class="hold-transition sidebar-mini normal-mode"> <!-- Add normal-mode class -->
   <div class="wrapper">
@@ -36,11 +44,19 @@
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
+
+      <li class="nav-item">
+          <a class="btn btn-danger btn-sm" href="logout.php" role="button" title="Log Out">
+            <i class="fas fa-power-off"></i>
+          </a>
+      </li>
+
         <li class="nav-item">
           <a class="nav-link" id="dark-mode-toggle" href="#" role="button" title="Toggle dark mode">
             <i class="fas fa-sun" id="dark-mode-icon"></i>
           </a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" data-widget="fullscreen" href="#" role="button">
             <i class="fas fa-expand-arrows-alt"></i>
@@ -48,7 +64,6 @@
         </li>
       </ul>
     </nav>
-
 <aside class="main-sidebar sidebar-dark-primary elevation-4 bg">
   <div class="sidebar">
     <div class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-between align-items-center">
@@ -57,7 +72,7 @@
           <img src="dist/img/scoups.jpeg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info ml-1">
-          <a href="#" class="d-block">Salwa</a>
+          <a href="#" class="d-block"><?=$_SESSION['nama']?></a>
         </div>
       </div>
     </div>
@@ -69,8 +84,8 @@
                 <p>Dashboard</p>
               </a>
             </li>
-            <li class="nav-item <?php echo ($title === 'siswa' || $title === 'siswa_create' || $title === 'siswa_edit') ? 'menu-open' : ''; ?>">
-              <a href="index.php?page=siswa&title=siswa" class="nav-link <?php if($title === 'siswa' || $title === 'siswa_create' || $title === 'siswa_edit'){ echo 'active'; } ?>">
+            <li class="nav-item <?php echo ($title === 'siswa' || $title === 'siswa_create' ) ? 'menu-open' : ''; ?>">
+              <a href="index.php?page=siswa&title=siswa" class="nav-link <?php if($title === 'siswa' || $title === 'siswa_create'){ echo 'active'; } ?>">
                 <i class="fas fa-users"></i>
                 <p>
                   Siswa 
@@ -92,8 +107,8 @@
                 </li>
               </ul>
             </li>
-            <li class="nav-item <?php echo ($title === 'pegawai' || $title === 'pegawai_create' || $title === 'pegawai_edit') ? 'menu-open' : ''; ?>">
-              <a href="index.php?page=pegawai&title=pegawai" class="nav-link <?php if($title === 'pegawai' || $title === 'pegawai_create' || $title === 'pegawai_edit'){ echo 'active'; } ?>">
+            <li class="nav-item <?php echo ($title === 'pegawai' || $title === 'pegawai_create' ) ? 'menu-open' : ''; ?>">
+              <a href="index.php?page=pegawai&title=pegawai" class="nav-link <?php if($title === 'pegawai' || $title === 'pegawai_create' ){ echo 'active'; } ?>">
                 <i class="fas fa-users"></i>
                 <p>Pegawai</p>
                 <i class="right fas fa-angle-left"></i>
@@ -113,11 +128,26 @@
                 </li>
               </ul>
             </li>
-            <li class="nav-item">
-              <a href="index.php?page=buku&title=buku" class="nav-link <?php if($title==='buku') echo 'active'; ?>">
+            <li class="nav-item <?php echo ($title === 'buku' || $title === 'buku_create') ? 'menu-open' : ''; ?>">
+              <a href="index.php?page=buku&title=buku" class="nav-link <?php if($title === 'buku' || $title === 'buku_create' ){ echo 'active'; } ?>">
                 <i class="fas fa-book-open"></i>
                 <p>Buku</p>
+                <i class="right fas fa-angle-left"></i>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="index.php?page=buku&title=buku" class="nav-link <?php if($title === 'buku') echo 'active'; ?>">
+                    <i class="fas fa-database"></i>
+                    <p>Database</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="index.php?page=buku_create&title=buku_create" class="nav-link <?php if($title === 'buku_create') echo 'active'; ?>">
+                    <i class="fas fa-plus"></i>
+                    <p>Create</p>
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </nav>
